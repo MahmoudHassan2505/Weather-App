@@ -7,7 +7,8 @@ void main(List<String> args) {
   runApp(
     BlocProvider(
       create: (context) => GetWeatherCubit(),
-      child: const MaterialApp(
+      child: MaterialApp(
+        theme: ThemeData(primarySwatch: Colors.amber),
         debugShowCheckedModeBanner: false,
         home: HomePage(),
       ),

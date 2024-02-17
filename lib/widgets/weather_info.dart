@@ -26,11 +26,11 @@ class WeatherInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Image.network(
-                weatherModel.icon,
-                height: 80,
+                'https:${weatherModel.icon}',
+                height: 100,
               ),
               Text(
-                '${weatherModel.temp}',
+                '${weatherModel.temp.round()}',
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
@@ -38,7 +38,7 @@ class WeatherInfo extends StatelessWidget {
               ),
               Column(
                 children: [
-                  Text('Wind: ${weatherModel.wind}'),
+                  Text('Wind: ${weatherModel.wind.round()} km/h'),
                   Text('humidity: ${weatherModel.humidity}'),
                 ],
               )

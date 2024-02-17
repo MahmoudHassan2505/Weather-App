@@ -38,7 +38,10 @@ class HomePage extends StatelessWidget {
           if (state is NoWeatherState) {
             return const NoWeather();
           } else if (state is DisplayWeatherState) {
-            return WeatherInfo();
+            return WeatherInfo(
+              weatherModel:
+                  BlocProvider.of<GetWeatherCubit>(context).weatherModel,
+            );
           } else {
             return const Center(child: Text("There is an error"));
           }
