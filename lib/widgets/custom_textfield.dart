@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -11,7 +13,11 @@ class CustomTextField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Center(
         child: TextField(
-          onSubmitted: (value) {},
+          onSubmitted: (value) async {
+            var getWeatherCubit = BlocProvider.of<GetWeatherCubit>(context);
+            getWeatherCubit.fetchWeather(value: value);
+            Navigator.of(context).pop();
+          },
           decoration: InputDecoration(
             hintText: "Enter City  Name",
             suffixIcon: const Icon(Icons.search),

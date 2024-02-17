@@ -8,10 +8,10 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Search City"),
+        title: const Text("Search City"),
         centerTitle: true,
       ),
-      body: CustomTextField(),
+      body: const CustomTextField(),
     );
   }
 }

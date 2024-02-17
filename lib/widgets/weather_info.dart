@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/models/weather_model.dart';
 
 class WeatherInfo extends StatelessWidget {
-  const WeatherInfo({super.key});
+  final WeatherModel weatherModel;
+  const WeatherInfo({super.key, required this.weatherModel});
 
   @override
   Widget build(BuildContext context) {
@@ -11,11 +13,11 @@ class WeatherInfo extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Cairo",
+            weatherModel.city,
             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
           ),
           Text(
-            "updated At:15:02 AM",
+            weatherModel.time,
           ),
           SizedBox(
             height: 50,
@@ -24,11 +26,11 @@ class WeatherInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Image.network(
-                "https://img.freepik.com/free-vector/rain-element-cute-weather-clipart-vector-grey-background_53876-135907.jpg?w=1380&t=st=1708180011~exp=1708180611~hmac=f4c5ad586257aa53a1c22525266fde9f59aceff2b760b32ba732f24d91c01490",
+                weatherModel.icon,
                 height: 80,
               ),
               Text(
-                '17',
+                '${weatherModel.temp}',
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
@@ -36,8 +38,8 @@ class WeatherInfo extends StatelessWidget {
               ),
               Column(
                 children: [
-                  Text('min: 15'),
-                  Text('max: 25'),
+                  Text('Wind: ${weatherModel.wind}'),
+                  Text('humidity: ${weatherModel.humidity}'),
                 ],
               )
             ],
@@ -46,7 +48,7 @@ class WeatherInfo extends StatelessWidget {
             height: 50,
           ),
           Text(
-            'Light Rain',
+            weatherModel.condition,
             style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
           )
         ],
