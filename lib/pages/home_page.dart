@@ -13,7 +13,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 5,
+        backgroundColor: Colors.blue,
+        elevation: 0,
         title: const Text(
           "Weather App",
         ),
@@ -31,7 +32,6 @@ class HomePage extends StatelessWidget {
             icon: Icon(Icons.search),
           ),
         ],
-        backgroundColor: Colors.transparent,
       ),
       body: BlocBuilder<GetWeatherCubit, WeatherState>(
         builder: (context, state) {
@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
           } else if (state is DisplayWeatherState) {
             return WeatherInfo(
               weatherModel:
-                  BlocProvider.of<GetWeatherCubit>(context).weatherModel,
+                  BlocProvider.of<GetWeatherCubit>(context).weatherModel!,
             );
           } else {
             return const Center(child: Text("There is an error"));
